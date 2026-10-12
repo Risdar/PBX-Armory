@@ -13,11 +13,11 @@ class PBX_ElectricAuraSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_ElectAura_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_ElectricAura);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_ElectricAura);
 		}
 		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("RoyalBlue1",0.75,16);
@@ -48,11 +48,11 @@ class PBX_FrostAuraSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_FrostAura_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FrostAura);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_FrostAura);
 		}
 		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("LightCyan",0.75,16);
@@ -83,11 +83,11 @@ class PBX_FireAuraSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_FireAura_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_FireAura);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_FireAura);
 		}
 		owner.GiveBody(AURASPHERE_HP,AURASPHERE_MAX);
 		owner.A_SetBlend("firebrick4",0.75,16);

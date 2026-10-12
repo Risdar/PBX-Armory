@@ -13,7 +13,7 @@ class PBX_BuddhaSphere : PB_Inventory
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBXItems_BuddhaGiver");
+		owner.A_GiveInventory("PBX_Armory_BuddhaGiver");
 		return true;
 	}
 
@@ -40,7 +40,7 @@ class PBX_BuddhaSphere : PB_Inventory
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBXItems_BuddhaGiver");
+		owner.A_GiveInventory("PBX_Armory_BuddhaGiver");
 		return true;
 	}
 

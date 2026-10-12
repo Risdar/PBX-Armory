@@ -21,7 +21,7 @@ class PBX_Jetpack : Inventory
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();
-		mJetpackFuelTake = PBXItems_JetPackFuelUse;
+		mJetpackFuelTake = PBX_Items_JetPackFuelUse;
 	}
 
 	//This function is executed every tic by items while they're in an actor's inventory:
@@ -52,16 +52,16 @@ class PBX_Jetpack : Inventory
         bool pickup = Super.TryPickup(toucher);
         if (pickup)
         {
-			if(PBXItems_SendTip)
+			if(PBX_Armory_SendTip)
 			{
 				Array<String> tips;
 				tips.Push(string.format(
 						StringTable.Localize("$PBX_JetPack_Tip1"),
 						PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_togglejetpack"),
-						PBXItems_JetPackFuelUse
+						PBX_Items_JetPackFuelUse
 					)
 				);
-				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_JetPack);
+				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_JetPack);
 			}
 			toucher.A_GiveInventory("PB_Fuel",mJetpackFuelTake*15); // So you atleast have 15 seconds of flight
         }

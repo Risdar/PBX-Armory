@@ -1,26 +1,36 @@
 // General
-server bool PBXItems_SendTip = true;
-server bool PBXItems_startwithshouldercannon = false;
-server bool PBXItems_shouldercannonuseammo = true;
+server bool PBX_Armory_SendTip = true;
 
 // Spawners
-server int PBXItems_powerupfilter = 0;
-server int PBXItems_itemFilter = 0;
-server int PBXItems_powerupHelpFlags = 0;
-server int PBXItems_itemHelpFlags = 0;
+server int PBX_Armory_powerupFilter = 0;
+server int PBX_Armory_itemFilter = 0;
+server int PBX_Armory_armorFilter = 0;
+
+server int PBX_Armory_powerupHelpFlags = 0;
+server int PBX_Armory_itemHelpFlags = 0;
+server int PBX_Armory_armorHelpFlags = 0;
 
 // Items
-server int PBXItems_FlameBelchAmmoUse = 20;
-server int PBXItems_IceBombAmmoUse = 1;
-server int PBXItems_JetPackFuelUse = 5;
+server bool PBX_Items_ShouldCanStart = false;
+server bool PBX_Items_ShouldCanUseAmmo = true;
+server int PBX_Items_FlameBelchAmmoUse = 20;
+server int PBX_Items_IceBombAmmoUse = 1;
+server int PBX_Items_JetPackFuelUse = 5;
+server int PBX_Items_Adrenaline_duration   = 15;
 
-// Durations
-server int PBXItems_goldinv_duration      = 90;
-server int PBXItems_terror_duration       = 45;
-server int PBXItems_infammo_duration      = 30;
-server int PBXItems_timefreeze_duration   = 45;
+// Powerups
+server int PBX_Powerups_GoldInv_duration      = 90;
+server int PBX_Powerups_Terror_duration       = 45;
+server int PBX_Powerups_Infammo_duration      = 30;
+server int PBX_Powerups_Timefreeze_duration   = 45;
 
-server int PBXItems_adrenaline_duration   = 15;
+// Armors
+server int PBX_Armors_White_duration   = 60;
+server int PBX_Armors_Demon_duration   = 60;
+server int PBX_Armors_Cyan_duration   = 12;
+server int PBX_Armors_DPurple_duration   = 12;
+server int PBX_Armors_LGreen_duration   = 12;
+server int PBX_Armors_Debuff_duration   = 4;
 
 
 

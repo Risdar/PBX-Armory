@@ -15,14 +15,14 @@ class PBX_RepairKit : PB_Inventory
 
     override void Touch(Actor toucher)
 	{
-        if(PBXItems_SendTip)
+        if(PBX_Armory_SendTip)
         {
 
             Array<String> tips;
             tips.Push("$PBX_Repairkit_Tip1");
             if(PBXCore_WeaponsLoaded)
                 tips.Push("$PBX_Repairkit_Tip2");
-            PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_RepairKit);
+            PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_RepairKit);
         }
         CheckWeapon(toucher);
 	}

@@ -1,10 +1,11 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
-PBXItems_Settings       = "\ci✦\c- PBX - Items Settings";
-PBXitems_Version        = "\ciPBX - Items Version: 1.5";
+PBX_Armory_Settings     = "\ci✦\c- PBX - Armory Settings";
+PBX_Armory_Version      = "\ciPBX - Armory Version: 1.0.0";
 
-//////////////////////////// POWERUPS AND ITEMS ///////////////////////////////////////////////////////////////////////////////
-// Powerups
+PBX_ArmorPickup         = "%s \n(+%d%% Protection/%d Amount)";
+
+//////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
 MEGABERSERK_PICKUP_LOW  = "Mega Berserk Pack (+%u much needed HP)";
 MEGABERSERK_PICKUP      = "Mega Berserk Pack (+%u HP)";
 MEGABERSERK_TAG         = "Mega Berserk";
@@ -30,25 +31,25 @@ SUPERSPHERE_TAG         = "SuperSphere";
 
 BLACKBLUR_PICKUP        = "Black Blur";
 BLACKBLUR_TAG           = "Tainted BlurSphere";
-PBX_BlackBlur_Tip1      = "The Black Blur has a longer duration but will give \custealth\c- to every monster nearby.";
+PBX_BlackBlur_Tip1      = "The Black Blur has a longer duration but gives \custealth\c- to every monster nearby.";
 
 DEFLECTSPHERE_PICKUP    = "Deflection Sphere";
-PBX_Deflect_Tip1        = "The Deflect Sphere will change the direction of every projectile that comes near.";
+PBX_Deflect_Tip1        = "The Deflect Sphere changes the direction of every projectile that comes near.";
 
 ELECTAURA_PICKUP        = "Electric Aura";
 PBX_ElectAura_Tip1      = "The Electric Aura Sphere summons a field that \cnstuns\c- enemies.";
 
 GOLDINV_PICKUP          = "Gold Invulnerability (Tainted Invulnerability)";
 GOLDINV_TAG             = "Gold Invulnerability";
-PBX_GoldInvul_Tip1      = "The Gold Invulnerability has a longer duration but will make every monster nearby \cfinvulnerable\c-.";
+PBX_GoldInvul_Tip1      = "The Gold Invulnerability has a longer duration but gives \cfinvulnerability\c- to nearby monsters.";
 
 LEGENDSPHERE_PICKUP     = "Legend Sphere";
-PBX_Legend_Tip1         = "The Legend Sphere will prevent you from going below 1 HP.";
+PBX_Legend_Tip1         = "The Legend Sphere prevents you from going below 1 HP.";
 
 LFSTEALORB_PICKUP       = "Lifesteal Orb";
 
 TERRORSPHERE_PICKUP     = "Terror Sphere";
-PBX_Terror_Tip1         = "The Terror Sphere will make every monster run away from you.";
+PBX_Terror_Tip1         = "The Terror Sphere makes every monster run away from you.";
 
 AMMOSPHERE_PICKUP       = "Ammo Sphere";
 PBX_Ammo_Tip1           = "The Ammo Sphere gives infinite ammo.";
@@ -63,12 +64,12 @@ TIMEFREEZE_TAG          = "Time Freeze";
 
 REDSOUL_PICKUP          = "Red SoulSphere (+%d HP)";
 REDSOUL_TAG             = "Tainted SoulSphere";
-PBX_RedSoul_Tip1        = "The Red SoulSphere gives more HP but will \cgdamage the player\c- if they get close.";
-PBX_RedSoul_Tip2        = "It will also spawn \cglost souls\c- for every corpse nearby.";
+PBX_RedSoul_Tip1        = "The Red SoulSphere gives more HP but \cgdamages the player\c- if they're close.";
+PBX_RedSoul_Tip2        = "It also spawns \cglost souls\c- for every corpse nearby.";
 
 DARKMEGA_PICKUP         = "Dark MegaSphere (+%d HP/+%d AP)";
 DARKMEGA_TAG            = "Tainted MegaSphere";
-PBX_DarkMega_Tip1       = "The Dark MegaSphere gives regen on top of the normal MegaSphere but it will \cgheal\c- every monster nearby.";
+PBX_DarkMega_Tip1       = "The Dark MegaSphere gives regen but \cgheals\c- every monster nearby.";
 
 FROSTAURA_PICKUP        = "Frost Aura";
 PBX_FrostAura_Tip1      = "The Frost Aura Sphere summons a field that \cvfreeze\c- enemies.";
@@ -78,10 +79,10 @@ PBX_FireAura_Tip1       = "The Fire Aura Sphere summons a field that \cxburn\c- 
 
 FLIGHTSPHERE_PICKUP     = "Flight Sphere";
 
-// Items
+//////////////////////////// ITEMS ///////////////////////////////////////////////////////////////////////////////
 REPAIRKIT_PICKUP        = "Weapon Supply Kit";
 REPAIRKIT_NOEFFECT      = "The Supply Kit has no effect on this weapon!";
-PBX_Repairkit_Tip1      = "The Weapon Repair Kit spawns ammo for the current weapon.";
+PBX_Repairkit_Tip1      = "The Weapon Repair Kit spawns ammo for the currently selected weapon.";
 PBX_Repairkit_Tip2      = "It will also repair all of the \crMonster Weapons.";
 
 ADRENAL_PICKUP          = "You Found an Adrenaline";
@@ -94,20 +95,72 @@ SHOULDCAN_ICENOTREADY   = "Ice Bomb Not Ready";
 SHOULDCANNON_NOFUEL     = "You Dont have Enough Fuel";
 SHOULDCANNON_NOROCKET   = "You Dont have Enough Rockets";
 SHOULDCANNON_TAG        = "Shoulder Cannon";
-PBX_ShouldCan_Tip1      = "You can use the the \cgflame belch\c- by using %s and the \cyice bomb\c- by using %s.";
+PBX_ShouldCan_Tip1      = "Press %s for \cgflame belch\c- and %s for \cyice bomb\c-.";
 
 JETPACK_PICKUP          = "You Found a Jetpack";
 JETPACK_TAG             = "JetPack";
 JETPACK_NOFUEL          = "Fuel Depleted";
 JETPACK_ACTIVE          = "JetPack Activated";
 JETPACK_DEACTIVE        = "JetPack Deactivated";
-PBX_JetPack_Tip1        = "You can activate the JetPack by pressing %s, while active it will consume %d fuel every second.";
+PBX_JetPack_Tip1        = "Press %s to activate JetPack, it then uses %d fuel every second.";
 
 UPGRADEBOT_TAG          = "Upgrade Bot";
 UPGRADEBOT_GIVE         = "You Got the \cf%s";
 UPGRADEBOT_GIVEBACKPACK = "You Got a \cfBackpack";
 UPGRADEBOT_DISPLAY      = "Activate \cdUpgrade Bot\c-";
-PBX_UpgradeBot_Tip1     = "The Upgrade Bot will give you a random Weapon Upgrade.";
+PBX_UpgradeBot_Tip1     = "The Upgrade Bot gives you a random Weapon Upgrade.";
+
+//////////////////////////// ARMORS ///////////////////////////////////////////////////////////////////////////////
+PBX_Armors_Red           = "UAC Spec-Ops Armor";
+
+PBX_Armors_Purple        = "QUAD Energy Armor (Quad Damage)";
+PBX_Armors_Purple_Tag    = "QUAD Energy Armor";
+
+PBX_Armors_White         = "UAC Advanced Medicine Suit (Regeneration)";
+PBX_Armors_White_Tag     = "UAC Advanced Medicine Suit";
+
+PBX_Armors_Orange        = "UAC Special Recon Armor (Night Vision)";
+PBX_Armors_Orange_Tag    = "UAC Special Recon Armor";
+
+PBX_Armors_Yellow        = "Hazardous Environment Armor (Hazmat & Speed)";
+PBX_Armors_Yellow_Tag    = "Hazardous Environment Armor";
+
+PBX_Armors_Black         = "UAC Commander Armor (Backpack)";
+PBX_Armors_Black_Tag     = "UAC Commander Armor";
+
+PBX_Armors_Demon         = "Picked up- UHG!, this thing stinks like rotten meat...";
+PBX_Armors_Demon_Tag     = "Demonic Armor";
+PBX_Armors_Demon_Tip1    = "The Demonic Armor gives Berserk, Quad Damage, and Fear Effect.";
+
+PBX_Armors_Cyan          = "Code in Execution - %d Seconds Time Stop (Time Freeze)";
+PBX_Armors_Cyan_Tag      = "UAC Experimental Time Dilation Armor";
+
+PBX_Armors_DarkPurple    = "AGV Resource Duplicator Armor (Infinite Ammo)";
+PBX_Armors_DrkPurple_Tag = "AGV Resource Duplicator Armor";
+
+PBX_Armors_DarkRed       = "Reactive Armor Plating Equipped";
+PBX_Armors_DarkRed_Tag   = "Reactive Armor Plating";
+PBX_Armors_DarkRed_Tip1  = "The Dark Red Armor knockbacks any enemy that comes into contact with you.";
+
+PBX_Armors_Gold          = "Advanced Magnetic Armor (Item Magnet)";
+PBX_Armors_Gold_Tag      = "Advanced Magnetic Armor";
+
+PBX_Armors_Gray          = "UAC Prototype Testing Armor: \n%d Durability, %d Percent Protection";
+PBX_Armors_Gray_Tag      = "UAC Prototype Testing Armor";
+PBX_Armors_Gray_Tip1     = "The Gray Armor will randomly set your Armor Amount and Save Percent.";
+
+PBX_Armors_LightBlue     = "UAC Hydro Armor";
+PBX_Armors_LBlue_Tip1    = "The Light Blue Armor will give you unlimited oxygen and increase your speed in water.";
+
+PBX_Armors_LightGreen    = "Guardian Angel System Installed";
+PBX_Armors_LGreen_Tag    = "UAC Guardian Angel System";
+PBX_Armors_LGreenActive  = "Guardian Angel System Active";
+PBX_Armors_LGreen_Tip1   = "The Light Green Armor will give you a Second Chance when dying.";
+PBX_Armors_LGreen_Tip2   = "When you take fatal damage the Armor will give you Invulnerability that lasts for %d seconds, %d HP, and %d Armor with %d Percent Protection.";
+
+PBX_Armors_Pink          = "UAC Hostile Repulsor Armor";
+PBX_Armors_Pink_Tip1     = "The Pink Armor gives a stun debuff to any enemy that hits you.";
 
 //////////////////////////// MENU TIPS ///////////////////////////////////////////////////////////////////////////////
-TIP_pbxitems_startwithshouldercannon = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";
+TIP_PBX_Items_ShouldCanStart = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";
+

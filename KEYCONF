@@ -1,13 +1,13 @@
-addkeysection "$PBXITEMS_KEYS_SHOULDERCANNON"   PBX_KEY
+addkeysection "$PBX_ARMORY_KEYS_SHOULDERCANNON"   PBX_KEY
 Alias          pbx_doflame	                    "netevent PBX_UseFlameBelch"
 Alias          pbx_doice	                    "netevent PBX_UseIceBomb"
-AddMenuKey     "$PBXITEMS_KEYS_FLAMEBELCH" 	    pbx_doflame
-AddMenuKey     "$PBXITEMS_KEYS_ICEBOMB" 	    pbx_doice
+AddMenuKey     "$PBX_ARMORY_KEYS_FLAMEBELCH" 	    pbx_doflame
+AddMenuKey     "$PBX_ARMORY_KEYS_ICEBOMB" 	    pbx_doice
 defaultbind     O                               pbx_doflame
 defaultbind     P                               pbx_doice
 
 addkeysection "Jet Pack"                        PBX_KEY
 Alias         pbx_togglejetpack	                "netevent PBX_ToggleJetpack"
-AddMenuKey    "$PBXITEMS_KEYS_JETPACK" 	        pbx_togglejetpack
+AddMenuKey    "$PBX_ARMORY_KEYS_JETPACK" 	        pbx_togglejetpack
 defaultbind   K                                 pbx_togglejetpack
 

@@ -1,6 +1,57 @@
 #include "./AuraSpheres.zs" // Aura Spheres
 #include "./TaintedSpheres.zs" // Tainted Spheres
 
+enum PBX_Powerups_Values
+{
+    MEGABERSERK_HP      = 200
+    ,MEGABERSERK_MAX    = 200
+
+    ,SUPERSPHERE_HP     = 100
+    ,SUPERSPHERE_MAX    = 200
+
+    ,ULTRAARMOR_SV      = 70
+    ,ULTRAARMOR_AMT     = 100
+
+    ,HYPERSPHERE_HP     = 200
+    ,HYPERSPHERE_MAX    = 200
+    ,HYPERARMOR_SV      = 100
+    ,HYPERARMOR_AMT     = 200
+
+    ,MINISPHERE_HP      = 50
+    ,MINISPHERE_MAX     = 200
+    ,MINIARMOR_SV       = 60
+    ,MINIARMOR_AMT       = 50
+
+    ,REDSOUL_HP   		= 150
+    ,REDSOUL_MAX   		= 200
+
+	,DARKMEGA_HP   		= 200
+    ,DARKMEGA_MAX   	= 200
+
+    ,AURASPHERE_HP   	= 100
+    ,AURASPHERE_MAX   	= 200
+
+}
+
+const PBX_POWERUP_HELP_FLAG = "PBX_Armory_powerupHelpFlags";
+enum PBX_Powerups_TipFlags
+{
+	PBX_Armory_Tip_BlackBlur			   = 1 << 0
+	,PBX_Armory_Tip_DeflectSphere          = 1 << 1
+	,PBX_Armory_Tip_ElectricAura           = 1 << 2
+	,PBX_Armory_Tip_GoldInvul              = 1 << 3
+	,PBX_Armory_Tip_LegendSPhere           = 1 << 4
+	,PBX_Armory_Tip_TerrorSphere           = 1 << 6
+	,PBX_Armory_Tip_AmmoSphere             = 1 << 7
+	,PBX_Armory_Tip_GuardSphere            = 1 << 8
+
+	,PBX_Armory_Tip_RedSoul                = 1 << 9
+	,PBX_Armory_Tip_DarkMega               = 1 << 10
+
+	,PBX_Armory_Tip_FrostAura              = 1 << 11
+	,PBX_Armory_Tip_FireAura               = 1 << 12
+}
+
 // ============================================================
 // PBX Powerups - From PB's More Items mod by HyperExia
 // ============================================================
@@ -109,7 +160,7 @@ class PBX_UltraSphere : PB_Inventory
 			loop;
 	}
 }
-class PBX_UltraArmor : PBXCore_ArmorBase
+class PBX_UltraArmor : PBX_ArmorBase
 {
 	Default
     {
@@ -157,7 +208,7 @@ class PBX_HyperSphere : PB_Inventory
 			loop;
 	}
 }
-class PBX_HyperArmor : PBXCore_ArmorBase
+class PBX_HyperArmor : PBX_ArmorBase
 {
 	Default
     {
@@ -206,7 +257,7 @@ class PBX_MiniSphere : PB_Inventory
 			loop;
 	}
 }
-class PBX_MiniArmor : PBXCore_ArmorBase
+class PBX_MiniArmor : PBX_ArmorBase
 {
 	Default
     {
@@ -237,11 +288,11 @@ class PBX_DeflectSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_Deflect_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_DeflectSphere);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_DeflectSphere);
 		}
 		owner.A_SetBlend("LightGreen",0.75,16);
 		owner.A_GiveInventory("PBX_DeflectGiver");
@@ -276,14 +327,14 @@ class PBX_LegendSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_Legend_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_LegendSPhere);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_LegendSPhere);
 		}
 		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBXItems_BuddhaGiver");
+		owner.A_GiveInventory("PBX_Armory_BuddhaGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
 		return true;
 	}
@@ -295,7 +346,7 @@ class PBX_LegendSphere : PB_Inventory
 			loop;
 	}
 }
-class PBXItems_BuddhaGiver : PBX_BuddhaGiver 
+class PBX_Armory_BuddhaGiver : PBX_BuddhaGiver 
 {Default{Powerup.Color "00 00 128", 0.3;}}
 
 
@@ -342,14 +393,14 @@ class PBX_TerrorSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_Terror_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_TerrorSphere);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_TerrorSphere);
 		}
 		owner.A_SetBlend("DarkRed",0.75,16);
-		owner.A_GiveInventory("PBXItems_FrightenerGiver");
+		owner.A_GiveInventory("PBX_Powerups_FrightenerGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("BerserkGrin");
 		return true;
 	}
@@ -361,9 +412,9 @@ class PBX_TerrorSphere : PB_Inventory
 			loop;
 	}
 }
-class PBXItems_FrightenerGiver : PBX_FrightenerGiver 
+class PBX_Powerups_FrightenerGiver : PBX_FrightenerGiver 
 {
-	mixin PBXItems_Duration;
+	mixin PBX_Armory_Duration;
 	Default{Powerup.Color "GoldMap";}
 }
 
@@ -382,14 +433,14 @@ class PBX_AmmoSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_Ammo_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_AmmoSphere);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_AmmoSphere);
 		}
 		owner.A_SetBlend("yellow",0.75,16);
-		owner.A_GiveInventory("PBXItems_InfiniteAmmoGiver");
+		owner.A_GiveInventory("PBX_Powerups_InfAmmoGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
 		return true;
 	}
@@ -401,9 +452,9 @@ class PBX_AmmoSphere : PB_Inventory
 			loop;
 	}
 }
-class PBXItems_InfiniteAmmoGiver : PBX_InfiniteAmmoGiver 
+class PBX_Powerups_InfAmmoGiver : PBX_InfiniteAmmoGiver 
 {
-	mixin PBXItems_Duration;
+	mixin PBX_Armory_Duration;
 	Default{Powerup.Color "255 0 0", 0.4;}
 }
 
@@ -422,14 +473,14 @@ class PBX_GuardSphere : PB_Inventory
 
 	override bool Use(bool pickup)
 	{
-		if(PBXItems_SendTip)
+		if(PBX_Armory_SendTip)
 		{
 			Array<String> tips;
 			tips.Push("$PBX_Guard_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_powerupHelpFlags",PBXItems_Tip_GuardSphere);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_GuardSphere);
 		}
 		owner.A_SetBlend("PaleTurquoise1",0.75,16);
-		owner.A_GiveInventory("PBXItems_ProtectionGiver");
+		owner.A_GiveInventory("PBX_Armory_ProtectionGiver");
 		return true;
 	}
 
@@ -440,7 +491,7 @@ class PBX_GuardSphere : PB_Inventory
 			loop;
 	}
 }
-class PBXItems_ProtectionGiver : PBX_ProtectionGiver 
+class PBX_Armory_ProtectionGiver : PBX_ProtectionGiver 
 {Default{Powerup.Color "GreenMap"; Damagefactor "Normal", 0.25;}}
 
 // --- PowerRegeneration ---
@@ -487,7 +538,7 @@ class PBX_TimeSphere : PB_Inventory
 	override bool Use(bool pickup)
 	{
 		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBXItems_TimeFreezeGiver");
+		owner.A_GiveInventory("PBX_Powerups_TimeFreezeGiver");
 		return true;
 	}
 
@@ -498,9 +549,9 @@ class PBX_TimeSphere : PB_Inventory
 			loop;
 	}
 }
-class PBXItems_TimeFreezeGiver : PBX_TimeFreezeGiver 
+class PBX_Powerups_TimeFreezeGiver : PBX_TimeFreezeGiver 
 {
-	mixin PBXItems_Duration;
+	mixin PBX_Armory_Duration;
 	Default{Powerup.Color "Goldmap";}
 }
 

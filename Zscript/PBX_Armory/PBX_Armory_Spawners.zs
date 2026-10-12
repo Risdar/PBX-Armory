@@ -1,4 +1,4 @@
-enum PBXItems_ePowerupSpawns
+enum PBX_Armory_PowerupSpawns
 {
 	DisableMegaBerserk			= 1 << 0,
 	DisableSuperSphere			= 1 << 1,
@@ -31,7 +31,7 @@ enum PBXItems_ePowerupSpawns
 
 }
 
-enum PBXItems_eItemSpawns
+enum PBX_Armory_ItemSpawns
 {
 	DisableRepairKit			= 1 << 0,
 	DisableAdrenaline           = 1 << 1,
@@ -41,14 +41,34 @@ enum PBXItems_eItemSpawns
 
 }
 
-class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInjector
+enum PBX_Armory_ArmorSpawns
+{
+	DisableRed			= 1 << 0,
+	DisablePurple		= 1 << 1,
+	DisableWhite		= 1 << 2,
+	DisableOrange		= 1 << 3,
+	DisableYellow		= 1 << 4,
+	DisableBlack		= 1 << 5,
+	DisableDemon		= 1 << 6,
+	DisableCyan			= 1 << 7,
+	DisableDarkPurple	= 1 << 8,
+	DisableDarkRed		= 1 << 9,
+	DisableGold			= 1 << 10,
+	DisableGray			= 1 << 11,
+	DisableLightBlue	= 1 << 12,
+	DisableLightGreen	= 1 << 13,
+	DisablePink			= 1 << 14
+}
+
+class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBInjector
 {
 	override void Init(PB_EventHandler handler)		//override this
 	{
-        name powerupsFlag = "PBXItems_powerupfilter";
-        name itemsFlag = "PBXItems_itemFilter";
+        name powerupsFlag = "PBX_Armory_powerupfilter";
+        name itemsFlag = "PBX_Armory_itemFilter";
+        name armorsFlag = "PBX_Armory_armorFilter";
 
-        // Powerups
+//////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
         if(!CheckFlag(DisableMegaBerserk,powerupsFlag))
         {
             handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_MegaBerserk', 255, 1);
@@ -220,7 +240,7 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
             handler.InjectSpawn('PB_SoulSphereSpawnerT4', 'PBX_FlightSphere', 255, 1);
         }
 
-        // Items
+//////////////////////////// ITEMS ///////////////////////////////////////////////////////////////////////////////
         if(!CheckFlag(DisableRepairKit,itemsFlag))
         {
             handler.InjectSpawn('PB_PackSpawnerT1', 'PBX_RepairKit', 255, 1);
@@ -252,11 +272,112 @@ class PBItems_Injector : PBInjector	//your injector needs to inherit from PBInje
 
         if(!CheckFlag(DisableUpgradeBot,itemsFlag))
         {
-            // handler.InjectSpawn('PB_UpgradeSpawnerT1', 'PBXItems_UpgradeBot', 255, 1);
-            handler.InjectSpawn('PB_UpgradeSpawnerT2', 'PBXItems_UpgradeBot', 255, 1);
-            handler.InjectSpawn('PB_UpgradeSpawnerT3', 'PBXItems_UpgradeBot', 255, 1);
-            // handler.InjectSpawn('PB_UpgradeSpawnerT4', 'PBXItems_UpgradeBot', 255, 1);
+            // handler.InjectSpawn('PB_UpgradeSpawnerT1', 'PBX_Armory_UpgradeBot', 255, 1);
+            handler.InjectSpawn('PB_UpgradeSpawnerT2', 'PBX_Armory_UpgradeBot', 255, 1);
+            handler.InjectSpawn('PB_UpgradeSpawnerT3', 'PBX_Armory_UpgradeBot', 255, 1);
+            // handler.InjectSpawn('PB_UpgradeSpawnerT4', 'PBX_Armory_UpgradeBot', 255, 1);
         }
+
+//////////////////////////// ARMORS ///////////////////////////////////////////////////////////////////////////////
+        // Red 0
+        if(!CheckFlag(DisableRed,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT2', 'PBX_RedArmor', 255, 1);
+			handler.InjectSpawn('PB_BlueSpawnerT3', 'PBX_RedArmor', 255, 1);
+		}
+
+		// Purple 1
+        if(!CheckFlag(DisablePurple,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT3', 'PBX_PurpleArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT4', 'PBX_PurpleArmor', 255, 1);
+		}
+
+		// White 2
+        if(!CheckFlag(DisableWhite,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT1', 'PBX_WhiteArmor', 255, 1);
+		}
+
+		// Orange 3
+        if(!CheckFlag(DisableOrange,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT1', 'PBX_OrangeArmor', 255, 1);
+		}
+
+		// Yellow 4
+        if(!CheckFlag(DisableYellow,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT2', 'PBX_YellowArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT3', 'PBX_YellowArmor', 255, 1);
+		}
+
+		// Black 5
+        if(!CheckFlag(DisableBlack,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT1', 'PBX_BlackArmor', 255, 1);
+			handler.InjectSpawn('PB_BlueSpawnerT2', 'PBX_BlackArmor', 255, 1);
+		}
+		
+		// Demon 6
+        if(!CheckFlag(DisableDemon,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT3', 'PBX_DemonArmor', 255, 1);
+			handler.InjectSpawn('PB_BlueSpawnerT4', 'PBX_DemonArmor', 255, 1);
+		}
+
+		// Cyan 7
+        if(!CheckFlag(DisableCyan,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT3', 'PBX_CyanArmor', 255, 1);
+			handler.InjectSpawn('PB_BlueSpawnerT4', 'PBX_CyanArmor', 255, 1);
+		}
+
+		// Dark Purple 8
+        if(!CheckFlag(DisableDarkPurple,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT4', 'PBX_DarkPurpleArmor', 255, 1);
+		}
+
+		// Dark Red 9
+        if(!CheckFlag(DisableDarkRed,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT4', 'PBX_DarkRedArmor', 255, 1);
+		}
+		
+		// Gold 10
+        if(!CheckFlag(DisableGold,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT4', 'PBX_GoldArmor', 255, 1);
+		}
+
+		// Gray 11
+        if(!CheckFlag(DisableGray,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT1', 'PBX_GrayArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT2', 'PBX_GrayArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT3', 'PBX_GrayArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT4', 'PBX_GrayArmor', 255, 1);
+		}
+
+		// Light Blue 12
+        if(!CheckFlag(DisableLightBlue,armorsFlag))
+		{
+			handler.InjectSpawn('PB_GreenSpawnerT2', 'PBX_LightBlueArmor', 255, 1);
+			handler.InjectSpawn('PB_GreenSpawnerT3', 'PBX_LightBlueArmor', 255, 1);
+		}
+
+		// Light Green 13
+        if(!CheckFlag(DisableLightGreen,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT4', 'PBX_LightGreenArmor', 255, 1);
+		}
+
+		// Pink 14
+        if(!CheckFlag(DisablePink,armorsFlag))
+		{
+			handler.InjectSpawn('PB_BlueSpawnerT2', 'PBX_PinkArmor', 255, 1);
+		}
 		
 	}
 

@@ -11,7 +11,7 @@
 // Xaser - Amazing Mod-Swaping Animations from Argent 0.5.3
 // Hexereticdoom - Original version of HXRTC HUD
 
-class PBXItems_UpgradeBot : SwitchableDecoration
+class PBX_Armory_UpgradeBot : SwitchableDecoration
 {
 
 	Default
@@ -89,7 +89,7 @@ class PBXItems_UpgradeBot : SwitchableDecoration
 
 // Gets all the upgrade and puts them into an array
 // This way its only called once
-class PBXItems_UpgradeBotHandler : StaticEventHandler
+class PBX_Armory_UpgradeBotHandler : StaticEventHandler
 {
     private Array<Class<PB_UpgradeItem> > cachedUpgrades;
 
@@ -119,7 +119,7 @@ class PBXItems_UpgradeBotHandler : StaticEventHandler
 			PBXCore_Debug.print("Found Upgrade Item");
         }
 
-        PBXCore_Debug.printInt("PBXItems_UpgradeBotHandler: found %d upgrade item(s).", cachedUpgrades.Size());
+        PBXCore_Debug.printInt("PBX_Armory_UpgradeBotHandler: found %d upgrade item(s).", cachedUpgrades.Size());
     }
 
     // Returns a pointer to a random member of the array
@@ -142,16 +142,16 @@ class PBXItems_UpgradeBotHandler : StaticEventHandler
     }
 
     // Easy way to get the handler
-    static PBXItems_UpgradeBotHandler Get()
+    static PBX_Armory_UpgradeBotHandler Get()
     {
-        return PBXItems_UpgradeBotHandler(StaticEventHandler.Find('PBXItems_UpgradeBotHandler'));
+        return PBX_Armory_UpgradeBotHandler(StaticEventHandler.Find('PBX_Armory_UpgradeBotHandler'));
     }
 }
 
 // Plays an animation and actually gives the upgrade
 class UpgradeBotAnimation : PB_WeaponBase
 {
-    PBXItems_UpgradeBotHandler handler;
+    PBX_Armory_UpgradeBotHandler handler;
     Weapon savedWeapon; // what the player was holding before force switch
 
     Default
@@ -169,10 +169,10 @@ class UpgradeBotAnimation : PB_WeaponBase
         Super.PostBeginPlay();
 
         // Get the Handler
-        handler = PBXItems_UpgradeBotHandler.Get();
+        handler = PBX_Armory_UpgradeBotHandler.Get();
         if (!handler)
         {
-            Console.Printf("PB_UpgradeAnimWeapon: PBXItems_UpgradeBotHandler not found!");
+            Console.Printf("PB_UpgradeAnimWeapon: PBX_Armory_UpgradeBotHandler not found!");
         }
 
         // Save the last weapon used so we can switch back to it
@@ -274,7 +274,7 @@ class UpgradeBotAnimation : PB_WeaponBase
 }
 
 // Modified from PB's execution handler
-class PBXItems_UpgradeBotDisplay : EventHandler
+class PBX_Armory_UpgradeBotDisplay : EventHandler
 {
     private pb_ProjScreen 	    mProjection;
     private pb_uiHack 		    mTranslator;
@@ -315,7 +315,7 @@ class PBXItems_UpgradeBotDisplay : EventHandler
     void drawEverything(RenderEvent event)
     {
         Actor target = getTarget();
-        if(target && target is "PBXItems_UpgradeBot") 
+        if(target && target is "PBX_Armory_UpgradeBot") 
         {
             Draw(event, target);
         }
@@ -365,11 +365,11 @@ class PBXItems_UpgradeBotDisplay : EventHandler
         screen.drawtext(mNameFont, font.CR_UNTRANSLATED, centerPos.x - int(wd/2) - 50, centerPos.y+hg-80, ky, DTA_ScaleX, 1.8, DTA_ScaleY, 1.8);
         screen.drawtext(mNameFont, font.CR_UNTRANSLATED, centerPos.x - int(wd2/2) - 15, (centerPos.y+hg-80)+hg+15, ky2, DTA_ScaleX, 1.8, DTA_ScaleY, 1.8);
 
-        if(PBXItems_SendTip)
+        if(PBX_Armory_SendTip)
         {
             Array<String> tips;
 			tips.Push("$PBX_UpgradeBot_Tip1");
-            PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_UpgradeBot);
+            PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_UpgradeBot);
         }
             
     }

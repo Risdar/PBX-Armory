@@ -61,9 +61,16 @@ class PBX_ShoulderCannon : CustomInventory
 
 	override void AttachToOwner(Actor other)
 	{
-		if (other == null || other.player == null) return;
+		if (other == null || other.player == null) 
+        {
+            return;
+        }
+
 		for (int i = 0; i < EQUIP_COUNT; i++)
-			isReady[i] = true; // Sets Every Type to Ready
+        {
+            isReady[i] = true; // Sets Every Type to Ready
+        }
+
 		pendingSlot = EQUIP_NONE;
 		other.A_GiveInventory(FUEL_AMMO, FUEL_AMMO_GIVE);
 		other.A_GiveInventory(ROCKET_AMMO, ROCKET_AMMO_GIVE);
@@ -74,11 +81,16 @@ class PBX_ShoulderCannon : CustomInventory
 	{
 		super.DoEffect();
 
-		if (owner == null || owner.player == null) return;
+		if (owner == null || owner.player == null) 
+        {
+            return;
+        }
 
 		// Update every seconds (35 tics)
 		if (level.time % TICRATE == 0)
-			UpdateEquipCooldowns();
+        {
+            UpdateEquipCooldowns();
+        }
 	}
 
 	override bool TryPickup(in out Actor toucher)
@@ -86,7 +98,7 @@ class PBX_ShoulderCannon : CustomInventory
         bool pickup = Super.TryPickup(toucher);
         if (pickup)
         {
-			if(PBXItems_SendTip)
+			if(PBX_Armory_SendTip)
 			{
 				Array<String> tips;
 				tips.Push(string.format(
@@ -95,7 +107,7 @@ class PBX_ShoulderCannon : CustomInventory
 						PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_doice")
 					)
 				);
-				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,"PBXItems_itemHelpFlags",PBXItems_Tip_ShoulderCannon);
+				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_ShoulderCannon);
 			}
         }
         return pickup;
@@ -162,9 +174,9 @@ class PBX_ShoulderCannon : CustomInventory
 		int slot = invoker.pendingSlot;
 		invoker.pendingSlot = EQUIP_NONE;
 
-		bool useELAmmo = PBXItems_shouldercannonuseammo;
-		int mFlameBelchAmmoUse = PBXItems_FlameBelchAmmoUse;
-		int mIceBombAmmoUse = PBXItems_IceBombAmmoUse;
+		bool useELAmmo = PBX_Items_ShouldCanUseAmmo;
+		int mFlameBelchAmmoUse = PBX_Items_FlameBelchAmmoUse;
+		int mIceBombAmmoUse = PBX_Items_IceBombAmmoUse;
 
 		if (slot == EQUIP_FLAMEBELCH)
 		{
