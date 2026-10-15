@@ -6,6 +6,7 @@ PBX_ARMORY_MENU_RESET_TOOLTIPS = "Reset PBX Armory Tool Tips";
 
 
 //////////////////////////// ITEM OPTIONS MENU ///////////////////////////////////////////////////////////////////////////////
+PBX_ITEMS_SMARTSCAV_ENABLE = "Enable Smart Scavenger";
 PBX_ITEMS_SHOULDCANNON_USEAMMO = "Shoulder Cannon Use Ammo";
 PBX_ITEMS_FLAMEBELCHAMMOUSE = "Flame Belch Ammo Use";
 PBX_ITEMS_ICEBOMBAMMOUSE = "Ice Bomb Ammo Use";
@@ -21,6 +22,7 @@ PBX_POWERUPS_ADRENALINE_DURATION = "Adrenaline Duration";
 PBX_POWERUPS_MENU_RESET_DURATIONS = "Reset PBX Powerups Durations";
 
 //////////////////////////// ARMOR DURATIONS MENU ///////////////////////////////////////////////////////////////////////////////
+PBX_ARMORS_HELMETDROPS_ENABLE = "Enemies Drop their Helmets";
 PBX_ARMORS_WHITE_DURATION = "White Armor Regeneration Duration";
 PBX_ARMORS_DEMON_DURATION = "Demon Armor Fear Duration";
 PBX_ARMORS_CYAN_DURATION = "Cyan Armor Time Freeze and Speed Duration";

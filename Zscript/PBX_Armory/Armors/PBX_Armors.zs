@@ -1,3 +1,5 @@
+#include "./HelmetDrops.zs" // Helmet Drops
+
 enum PBX_Armors_ArmorValues
 {
     RED_PERCENT             = 90,

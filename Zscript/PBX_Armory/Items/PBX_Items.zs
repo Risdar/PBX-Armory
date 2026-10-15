@@ -2,6 +2,7 @@
 #include "./ShoulderCannon.zs" // Shoulder Cannon
 #include "./Jetpack.zs" // Jetpack
 #include "./UpgradeBot.zs" // Upgrade Bot
+#include "./SmartScav.zs" // Smart Scavenger
 
 const PBX_ITEM_HELP_FLAG = "PBX_Armory_itemHelpFlags";
 enum PBX_Items_TipFlags
@@ -11,6 +12,7 @@ enum PBX_Items_TipFlags
 	,PBX_Armory_Tip_ShoulderCannon      = 1 << 2
 	,PBX_Armory_Tip_JetPack         	= 1 << 3
 	,PBX_Armory_Tip_UpgradeBot         	= 1 << 4
+	,PBX_Armory_Tip_SmartScav         	= 1 << 5
 }
 
 class PBX_Items_Handler : EventHandler

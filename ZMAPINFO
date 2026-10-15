@@ -2,6 +2,8 @@ Gameinfo
 {
 	addeventhandlers = "PBX_Armory_Handler"
 	addeventhandlers = "PBX_Items_Handler"
+	addeventhandlers = "PBX_HelmetDropHandler"
+	addeventhandlers = "PBX_SmartScavHandler"
 	addeventhandlers = "PBX_Armory_UpgradeBotHandler"
 	addeventhandlers = "PBX_Armory_UpgradeBotDisplay"
 }

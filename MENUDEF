@@ -28,7 +28,8 @@ OptionMenu "PBX_Armory_Menu"
     SafeCommand "$PBX_ARMORY_MENU_RESET_TOOLTIPS", "resetcvar PBX_Armory_powerupHelpFlags; resetcvar PBX_Armory_itemHelpFlags; resetcvar PBX_Armory_armorHelpFlags"
     StaticText " "
     StaticText	"--------- PBX Items Settings ---------", 1
-    Option "$PBX_ITEMS_START_WITH_SHOULDERCANNON",   "PBX_Items_ShouldCanStart", "OnOff","PBXCore_GlorykillLoaded",1,1
+    FlagOption "$PBX_ITEMS_SMARTSCAV_ENABLE",        "PBX_Armory_itemFilter",    "OffOn", 5
+    Option "$PBX_ITEMS_START_WITH_SHOULDERCANNON",   "PBX_Items_ShouldCanStart", "OnOff", "PBXCore_GlorykillLoaded",1,1
     Option  "$PBX_ITEMS_SHOULDCANNON_USEAMMO",       "PBX_Items_ShouldCanUseAmmo", "OnOff"
     Slider "$PBX_ITEMS_FLAMEBELCHAMMOUSE",           "PBX_Items_FlameBelchAmmoUse",     1, 500, 1
     Slider "$PBX_ITEMS_ICEBOMBAMMOUSE",              "PBX_Items_IceBombAmmoUse",        1, 500, 1
@@ -43,6 +44,7 @@ OptionMenu "PBX_Armory_Menu"
     SafeCommand "$PBX_POWERUPS_MENU_RESET_DURATIONS", "resetcvar PBX_Powerups_GoldInv_duration; resetcvar PBX_Powerups_Terror_duration; resetcvar PBX_Powerups_Infammo_duration; resetcvar PBX_Powerups_Timefreeze_duration; resetcvar PBX_Powerups_Adrenaline_duration"
     StaticText " "
     StaticText	"--------- PBX Armors Settings ---------", 1
+    FlagOption "$PBX_ARMORS_HELMETDROPS_ENABLE",       "PBX_Armory_armorFilter",   "OffOn", 15
     Slider "$PBX_ARMORS_WHITE_DURATION",               "PBX_Armors_White_duration",    1, 500, 1
     Slider "$PBX_ARMORS_DEMON_DURATION",               "PBX_Armors_Demon_duration",    1, 500, 1
     Slider "$PBX_ARMORS_CYAN_DURATION",                "PBX_Armors_Cyan_duration",     1, 500, 1

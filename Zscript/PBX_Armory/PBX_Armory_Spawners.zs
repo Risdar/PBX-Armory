@@ -1,63 +1,65 @@
 enum PBX_Armory_PowerupSpawns
 {
-	DisableMegaBerserk			= 1 << 0,
-	DisableSuperSphere			= 1 << 1,
-	DisableUltraSphere			= 1 << 2,
-	DisableHyperSphere			= 1 << 3,
-	DisableMiniSphere			= 1 << 4,
+	DisableMegaBerserk			= 1 << 0
+	,DisableSuperSphere			= 1 << 1
+	,DisableUltraSphere			= 1 << 2
+	,DisableHyperSphere			= 1 << 3
+	,DisableMiniSphere			= 1 << 4
 
-	DisableBlackBlur			= 1 << 5,
-	DisableDeflectSphere        = 1 << 6,
-	DisableElectricAura         = 1 << 7,
-	DisableGoldInvul            = 1 << 8,
-	DisableLegendSPhere         = 1 << 9,
-	DisableLifestealOrb         = 1 << 10,
-	DisableTerrorSphere         = 1 << 11,
-	DisableAmmoSphere           = 1 << 12,
-	DisableGuardSphere          = 1 << 13,
-	DisableRegenSphere          = 1 << 14,
-	DisableTimeSphere           = 1 << 15,
+	,DisableBlackBlur			= 1 << 5
+	,DisableDeflectSphere        = 1 << 6
+	,DisableElectricAura         = 1 << 7
+	,DisableGoldInvul            = 1 << 8
+	,DisableLegendSPhere         = 1 << 9
+	,DisableLifestealOrb         = 1 << 10
+	,DisableTerrorSphere         = 1 << 11
+	,DisableAmmoSphere           = 1 << 12
+	,DisableGuardSphere          = 1 << 13
+	,DisableRegenSphere          = 1 << 14
+	,DisableTimeSphere           = 1 << 15
 
-	DisableRedSoul              = 1 << 16,
-	DisableDarkMega             = 1 << 17,
+	,DisableRedSoul              = 1 << 16
+	,DisableDarkMega             = 1 << 17
 
-	DisableHaste                = 1 << 18,
-	DisableQuadDamage           = 1 << 19,
+	,DisableHaste                = 1 << 18
+	,DisableQuadDamage           = 1 << 19
 
-	DisableFrostAura            = 1 << 20,
-	DisableFireAura             = 1 << 21,
+	,DisableFrostAura            = 1 << 20
+	,DisableFireAura             = 1 << 21
 
-	DisableFlightSphere         = 1 << 22
+	,DisableFlightSphere         = 1 << 22
 
 }
 
 enum PBX_Armory_ItemSpawns
 {
-	DisableRepairKit			= 1 << 0,
-	DisableAdrenaline           = 1 << 1,
-	DisableShoulderCannon       = 1 << 2,
-	DisableJetPack              = 1 << 3,
-	DisableUpgradeBot           = 1 << 4
+	DisableRepairKit			= 1 << 0
+	,DisableAdrenaline          = 1 << 1
+	,DisableShoulderCannon      = 1 << 2
+	,DisableJetPack             = 1 << 3
+	,DisableUpgradeBot          = 1 << 4
+	,DisableSmartScav           = 1 << 5
 
 }
 
 enum PBX_Armory_ArmorSpawns
 {
-	DisableRed			= 1 << 0,
-	DisablePurple		= 1 << 1,
-	DisableWhite		= 1 << 2,
-	DisableOrange		= 1 << 3,
-	DisableYellow		= 1 << 4,
-	DisableBlack		= 1 << 5,
-	DisableDemon		= 1 << 6,
-	DisableCyan			= 1 << 7,
-	DisableDarkPurple	= 1 << 8,
-	DisableDarkRed		= 1 << 9,
-	DisableGold			= 1 << 10,
-	DisableGray			= 1 << 11,
-	DisableLightBlue	= 1 << 12,
-	DisableLightGreen	= 1 << 13,
-	DisablePink			= 1 << 14
+	DisableRed			= 1 << 0
+	,DisablePurple		= 1 << 1
+	,DisableWhite		= 1 << 2
+	,DisableOrange		= 1 << 3
+	,DisableYellow		= 1 << 4
+	,DisableBlack		= 1 << 5
+	,DisableDemon		= 1 << 6
+	,DisableCyan		= 1 << 7
+	,DisableDarkPurple	= 1 << 8
+	,DisableDarkRed		= 1 << 9
+	,DisableGold		= 1 << 10
+	,DisableGray		= 1 << 11
+	,DisableLightBlue	= 1 << 12
+	,DisableLightGreen	= 1 << 13
+	,DisablePink		= 1 << 14
+	,DisableHelmetDrop	= 1 << 15
 }
 
 class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBInjector
@@ -123,7 +125,6 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
             handler.InjectSpawn('PB_MegaSpawnerT2', 'PBX_ElectricAuraSphere', 255, 1);
             handler.InjectSpawn('PB_MegaSpawnerT3', 'PBX_ElectricAuraSphere', 255, 1);
         }
-
         
         if(!CheckFlag(DisableGoldInvul,powerupsFlag))
         {
@@ -386,4 +387,26 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
         let check = CVar.FindCVar(name);
         return (check.GetInt() & tipflag) == tipflag;
     }
+}
+
+class PBX_SmartScavHandler : EventHandler
+{
+    override void CheckReplacement(ReplaceEvent e) 
+	{
+        if(PBX_Armory_itemFilter & DisableSmartScav) 
+        {
+            return;
+        }
+
+        switch(e.Replacee.GetClassName())
+        {
+            case 'PB_CellPack':   e.Replacement  = "Smartscav_Cells";    break;
+            case 'PB_ShellBox':   e.Replacement  = "Smartscav_Shells";   break;
+            case 'PB_RocketBox':  e.Replacement  = "Smartscav_Rockets";  break;
+            case 'PB_HighCalBox': e.Replacement  = "Smartscav_HighCal";  break;
+            case 'PB_LowCalBox':  e.Replacement  = "Smartscav_LowCal";   break;
+            case 'PB_Medikit':    e.Replacement  = "Smartscav_Medikit";  break;
+        }
+    }
+
 }

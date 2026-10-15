@@ -1,7 +1,7 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
 PBX_Armory_Settings     = "\ci✦\c- PBX - Armory Settings";
-PBX_Armory_Version      = "\ciPBX - Armory Version: 1.0.0";
+PBX_Armory_Version      = "\ciPBX - Armory Version: 1.1.0";
 
 PBX_ArmorPickup         = "%s \n(+%d%% Protection/%d Amount)";
 
@@ -109,6 +109,8 @@ UPGRADEBOT_GIVE         = "You Got the \cf%s";
 UPGRADEBOT_GIVEBACKPACK = "You Got a \cfBackpack";
 UPGRADEBOT_DISPLAY      = "Activate \cdUpgrade Bot\c-";
 PBX_UpgradeBot_Tip1     = "The Upgrade Bot gives you a random Weapon Upgrade.";
+
+PBX_SmartScav_Tip1      = "Smart Scavenger splits pickups into smaller chunks if you dont have enough space for it.";
 
 //////////////////////////// ARMORS ///////////////////////////////////////////////////////////////////////////////
 PBX_Armors_Red           = "UAC Spec-Ops Armor";
