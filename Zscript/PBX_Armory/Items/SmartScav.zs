@@ -37,7 +37,7 @@ mixin class PBX_SmartScav
 
 	void ShowHelpText()
 	{
-		if(!PBXAddons_SendTip) return;
+		if(!PBX_Armory_SendTip) return;
 		Array<String> tips;
 		tips.Push("$PBX_SmartScav_Tip1");
 		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_SmartScav);
@@ -125,7 +125,7 @@ class Smartscav_Medikit : PB_Medikit
 {
 	void ShowHelpText()
 	{
-		if(!PBXAddons_SendTip) return;
+		if(!PBX_Armory_SendTip) return;
 		Array<String> tips;
 		tips.Push("$PBX_SmartScav_Tip1");
 		PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_SmartScav);
