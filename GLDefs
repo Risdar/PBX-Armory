@@ -43,7 +43,7 @@ pointlight DroppedHelm4
     size 30
 }
 
-object PB_DroppedHelmetItem
+object PBX_DroppedHelmetItem
 {
     frame 3BONB { light DroppedHelm1 }
     frame 3BONC { light DroppedHelm2 }
