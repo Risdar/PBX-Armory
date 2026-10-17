@@ -190,7 +190,7 @@ class PBX_WhiteArmor : PBX_ArmorBase
         Armor.SaveAmount WHITE_AMOUNT; 
         Inventory.PickupMessage "$PBX_Armors_White"; 
         Inventory.AltHudIcon "ARM4A0";
-        PBX_ArmorBase.ArmorToken 'PBX_Armors_Regeneration';
+        PBX_ArmorBase.ArmorToken 'WhiteArmor_Regeneration';
         Tag "$PBX_Armors_White_Tag"; 
     }
 
@@ -394,7 +394,7 @@ class PBX_DarkPurpleArmor : PBX_ArmorBase
         Armor.SaveAmount DPURPLE_AMOUNT; 
         Inventory.PickupMessage "$PBX_Armors_DarkPurple"; 
         Inventory.AltHudIcon "BRM4A0";
-        PBX_ArmorBase.ArmorToken 'PBX_Armors_InfiniteAmmo';
+        PBX_ArmorBase.ArmorToken 'DPurpleArmor_InfAmmo';
         Tag "$PBX_Armors_DrkPurple_Tag"; 
     }
 
