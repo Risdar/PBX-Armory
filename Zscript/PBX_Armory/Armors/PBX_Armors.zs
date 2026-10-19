@@ -237,15 +237,7 @@ class PBX_CyanArmor : PBX_ArmorBase
     }
 }
 
-class CyanArmor_TimeFreezer : PBX_TimeFreezeGiver 
-{
-    mixin PBX_Armory_Duration;
-    Default
-    {
-        Powerup.Color "GoldMap";
-    }
-}
-
+class CyanArmor_TimeFreezer : PBX_TimeFreezeGiver {mixin PBX_Armory_Duration;}
 class CyanArmor_Haste : PB_HasteGiver {mixin PBX_Armory_Duration;}
 
 //////////////////////////// DARK PURPLE ////////////////////////////////////////////////////////////////////////////////////

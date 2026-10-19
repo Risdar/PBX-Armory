@@ -39,7 +39,7 @@ mixin class PBX_Armory_Duration
             // Armors
             case 'WhiteArmor_Regeneration': 	tmp = 'PBX_WhiteArmor_duration';    break;
 			case 'DemonArmor_Frightener': 		tmp = 'PBX_DemonArmor_duration';    break;
-			case ';CyanArmor_TimeFreezer':
+			case 'CyanArmor_TimeFreezer':
 			case 'CyanArmor_Haste': 	        tmp = 'PBX_CyanArmor_duration';     break;
 			case 'DPurpleArmor_InfAmmo': 	    tmp = 'PBX_DPurpleArmor_duration';  break;
 			case 'LGreenArmor_Invul': 	        tmp = 'PBX_LGreenArmor_duration';   break;
