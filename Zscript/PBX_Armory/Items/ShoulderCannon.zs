@@ -174,9 +174,9 @@ class PBX_ShoulderCannon : CustomInventory
 		int slot = invoker.pendingSlot;
 		invoker.pendingSlot = EQUIP_NONE;
 
-		bool useELAmmo = PBX_Items_ShouldCanUseAmmo;
-		int mFlameBelchAmmoUse = PBX_Items_FlameBelchAmmoUse;
-		int mIceBombAmmoUse = PBX_Items_IceBombAmmoUse;
+		bool useELAmmo = PBX_SC_UseAmmo;
+		int mFlameBelchAmmoUse = PBX_SC_FlameBelchAmmoUse;
+		int mIceBombAmmoUse = PBX_SC_IceBombAmmoUse;
 
 		if (slot == EQUIP_FLAMEBELCH)
 		{

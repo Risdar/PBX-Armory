@@ -21,7 +21,7 @@ class PBX_Jetpack : Inventory
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();
-		mJetpackFuelTake = PBX_Items_JetPackFuelUse;
+		mJetpackFuelTake = PBX_JetPack_FuelUse;
 	}
 
 	//This function is executed every tic by items while they're in an actor's inventory:
@@ -58,7 +58,7 @@ class PBX_Jetpack : Inventory
 				tips.Push(string.format(
 						StringTable.Localize("$PBX_JetPack_Tip1"),
 						PB_HelpNotificationsHandler.PB_FormatKeybinds("pbx_togglejetpack"),
-						PBX_Items_JetPackFuelUse
+						PBX_JetPack_FuelUse
 					)
 				);
 				PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_JetPack);

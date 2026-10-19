@@ -1,53 +1,28 @@
-// --- PowerHighJump ---
-class PBX_BuddhaSphere : PB_Inventory
+// --- PowerDoubleFiringSpeed --- (This is bugged)
+class PBX_DoubleFiringSpeedGiver : PB_PowerupGiver { Default { Powerup.Type "PBX_PowerDoubleFiringSpeed"; } }
+class PBX_PowerDoubleFiringSpeed : PowerDoubleFiringSpeed
 {
-	Default
+	mixin PBX_PowerupTimer;
+	Default { Powerup.Duration BUDDHA_DEFAULT_DURATION; }
+
+	override void InitEffect()
 	{
-		Inventory.PickupMessage "Legend Sphere";
-		Inventory.PickupSound "MEGASPH";
-		+FLOATBOB
-		floatbobstrength .4;
-		Scale .73;
+		Super.InitEffect();
+		if(!Owner) return;
+		owner.A_AttachLightDef("DoubleFiringSpeedLight","DoubleFiringSpeedLight");
 	}
 
-	override bool Use(bool pickup)
+	override void DoEffect()
 	{
-		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBX_Armory_BuddhaGiver");
-		return true;
+		Super.DoEffect();
+		PowerupTimer("peru");
 	}
 
-	States
+	override void EndEffect()
 	{
-	Spawn:
-		LESP ABCD 6 bright;
-		loop;
-	}
-}
-
-// --- PowerReflection ---
-class PBX_BuddhaSphere : PB_Inventory
-{
-	Default
-	{
-		Inventory.PickupMessage "Legend Sphere";
-		Inventory.PickupSound "MEGASPH";
-		+FLOATBOB
-		floatbobstrength .4;
-		Scale .73;
-	}
-
-	override bool Use(bool pickup)
-	{
-		owner.A_SetBlend("DarkOrange",0.75,16);
-		owner.A_GiveInventory("PBX_Armory_BuddhaGiver");
-		return true;
-	}
-
-	States
-	{
-	Spawn:
-		LESP ABCD 6 bright;
-		loop;
+		Super.EndEffect();
+		if(!Owner) return;
+		EndBlend("peru");
+		owner.A_RemoveLight("DoubleFiringSpeedLight");
 	}
 }

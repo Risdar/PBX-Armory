@@ -4,30 +4,45 @@ PBX_ARMORY_MENU_ENABLE_TOOLTIPS = "Enable Armory Tooltips";
 PBX_ARMORY_MENU_RESET_SPAWNERS = "Reset PBX Armory Spawners";
 PBX_ARMORY_MENU_RESET_TOOLTIPS = "Reset PBX Armory Tool Tips";
 
-
 //////////////////////////// ITEM OPTIONS MENU ///////////////////////////////////////////////////////////////////////////////
 PBX_ITEMS_SMARTSCAV_ENABLE = "Enable Smart Scavenger";
 PBX_ITEMS_SHOULDCANNON_USEAMMO = "Shoulder Cannon Use Ammo";
-PBX_ITEMS_FLAMEBELCHAMMOUSE = "Flame Belch Ammo Use";
-PBX_ITEMS_ICEBOMBAMMOUSE = "Ice Bomb Ammo Use";
-PBX_ITEMS_JETPACKFUELUSE = "Jet Pack Fuel Use";
+PBX_SC_FlameBelchAmmoUse = "Flame Belch Ammo Use";
+PBX_SC_IceBombAmmoUse = "Ice Bomb Ammo Use";
+PBX_JetPack_FuelUse = "Jet Pack Fuel Use";
 PBX_ITEMS_START_WITH_SHOULDERCANNON = "Start with the Equipment Launcher";
 
-//////////////////////////// ITEM DURATIONS MENU ///////////////////////////////////////////////////////////////////////////////
+PBX_ITEMS_MENU_RESET_SETTINGS = "Reset PBX Items Settings";
+TIP_PBX_Items_ShouldCanStart = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";
+
+//////////////////////////// POWERUPS DURATIONS MENU ///////////////////////////////////////////////////////////////////////////////
 PBX_POWERUPS_GOLDINV_DURATION = "Gold Invulnerability Sphere Duration";
+PBX_POWERUPS_TAINTED_REGENERATION = "Tainted Regeneration Duration";
+PBX_POWERUPS_DEFLECT = "Deflect Duration";
+PBX_POWERUPS_BUDDHA = "Buddha Duration";
+PBX_POWERUPS_DRAIN = "Drain Duration";
+PBX_POWERUPS_FLIGHT = "Flight Duration";
 PBX_POWERUPS_TERROR_DURATION = "Terror Sphere Duration";
-PBX_POWERUPS_INFAMMO_DURATION = "Infinite Ammo Sphere Duration";
-PBX_POWERUPS_TIMEFREEZE_DURATION = "Time Freeze Sphere Duration";
+PBX_POWERUPS_HIGH_JUMP = "High Jump Duration";
+PBX_POWERUPS_INFINITE_AMMO = "Infinite Ammo Duration";
+PBX_POWERUPS_PROTECTION = "Protection Duration";
+PBX_POWERUPS_REFLECTION = "Reflection Duration";
+PBX_POWERUPS_REGENERATION = "Regeneration Duration";
+PBX_POWERUPS_TIME_FREEZE = "Time Freeze Duration";
+PBX_POWERUPS_ELECTRIC_AURA = "Electric Aura Duration";
+PBX_POWERUPS_FROST_AURA = "Frost Aura Duration";
+PBX_POWERUPS_FIRE_AURA = "Fire Aura Duration";
 PBX_POWERUPS_ADRENALINE_DURATION = "Adrenaline Duration";
+
 PBX_POWERUPS_MENU_RESET_DURATIONS = "Reset PBX Powerups Durations";
 
 //////////////////////////// ARMOR DURATIONS MENU ///////////////////////////////////////////////////////////////////////////////
 PBX_ARMORS_HELMETDROPS_ENABLE = "Enemies Drop their Helmets";
-PBX_ARMORS_WHITE_DURATION = "White Armor Regeneration Duration";
-PBX_ARMORS_DEMON_DURATION = "Demon Armor Fear Duration";
-PBX_ARMORS_CYAN_DURATION = "Cyan Armor Time Freeze and Speed Duration";
-PBX_ARMORS_DPURPLE_DURATION = "Dark Purple Armor Infinite Ammo Duration";
-PBX_ARMORS_LGREEN_DURATION = "Light Green Armor Second Chance Duration";
+PBX_WhiteArmor_duration = "White Armor Regeneration Duration";
+PBX_DemonArmor_duration = "Demon Armor Fear Duration";
+PBX_CyanArmor_duration = "Cyan Armor Time Freeze and Speed Duration";
+PBX_DPurpleArmor_duration = "Dark Purple Armor Infinite Ammo Duration";
+PBX_LGreenArmor_duration = "Light Green Armor Second Chance Duration";
 PBX_ARMORS_PINK_DURATION = "Pink Armor Stun Debuff Duration";
 PBX_ARMORS_MENU_RESET_DURATIONS = "Reset PBX Armors Durations";
 

@@ -1,7 +1,7 @@
 [enu default]
 //////////////////////////// GENERAL ///////////////////////////////////////////////////////////////////////////////
 PBX_Armory_Settings     = "\ci✦\c- PBX - Armory Settings";
-PBX_Armory_Version      = "\ciPBX - Armory Version: 1.1.1";
+PBX_Armory_Version      = "\ciPBX - Armory Version: 1.1.2";
 
 PBX_ArmorPickup         = "%s \n(+%d%% Protection/%d Amount)";
 
@@ -79,15 +79,15 @@ PBX_FireAura_Tip1       = "The Fire Aura Sphere summons a field that \cxburn\c- 
 
 FLIGHTSPHERE_PICKUP     = "Flight Sphere";
 
+ADRENAL_PICKUP          = "You Found an Adrenaline";
+ADRENAL_TAG             = "Adrenaline";
+PBX_Adrenaline_Tip1     = "The Adrenaline gives \ctQuad Damage\c- and \ckHaste\c-.";
+
 //////////////////////////// ITEMS ///////////////////////////////////////////////////////////////////////////////
 REPAIRKIT_PICKUP        = "Weapon Supply Kit";
 REPAIRKIT_NOEFFECT      = "The Supply Kit has no effect on this weapon!";
 PBX_Repairkit_Tip1      = "The Weapon Repair Kit spawns ammo for the currently selected weapon.";
 PBX_Repairkit_Tip2      = "It will also repair all of the \crMonster Weapons.";
-
-ADRENAL_PICKUP          = "You Found an Adrenaline";
-ADRENAL_TAG             = "Adrenaline";
-PBX_Adrenaline_Tip1     = "The Adrenaline gives \ctQuad Damage\c- and \ckHaste\c-.";
 
 SHOULDCANNON_PICKUP     = "Shoulder Cannon installed";
 SHOULDCAN_FLAMNOTREADY  = "Flame Belch Not Ready";
@@ -163,6 +163,4 @@ PBX_Armors_LGreen_Tip2   = "When you take fatal damage the Armor will give you I
 PBX_Armors_Pink          = "UAC Hostile Repulsor Armor";
 PBX_Armors_Pink_Tip1     = "The Pink Armor gives a stun debuff to any enemy that hits you.";
 
-//////////////////////////// MENU TIPS ///////////////////////////////////////////////////////////////////////////////
-TIP_PBX_Items_ShouldCanStart = "If enabled, the player will start with the Shoulder Cannon equipped. (Automatically disabled if GloryKill is loaded)";
 

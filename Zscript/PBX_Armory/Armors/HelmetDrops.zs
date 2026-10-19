@@ -52,7 +52,7 @@ class PBX_HelmetDropHandler : EventHandler
 		if (!actor.bISMONSTER) return;
 		
         // if helmet drops is disabled, stop
-        if(PBX_Armory_armorFilter & DisableHelmetDrop) return;
+        if(PBX_Armors_Filter & DisableHelmetDrop) return;
 
 		// Specifies the pattern
 		String targetStr	= "helmet";

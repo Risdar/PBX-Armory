@@ -1,12 +1,12 @@
 enum PBX_Armory_PowerupSpawns
 {
-	DisableMegaBerserk			= 1 << 0
-	,DisableSuperSphere			= 1 << 1
-	,DisableUltraSphere			= 1 << 2
-	,DisableHyperSphere			= 1 << 3
-	,DisableMiniSphere			= 1 << 4
+	DisableMegaBerserk			 = 1 << 0
+	,DisableSuperSphere			 = 1 << 1
+	,DisableUltraSphere			 = 1 << 2
+	,DisableHyperSphere			 = 1 << 3
+	,DisableMiniSphere			 = 1 << 4
 
-	,DisableBlackBlur			= 1 << 5
+	,DisableBlackBlur			 = 1 << 5
 	,DisableDeflectSphere        = 1 << 6
 	,DisableElectricAura         = 1 << 7
 	,DisableGoldInvul            = 1 << 8
@@ -29,16 +29,16 @@ enum PBX_Armory_PowerupSpawns
 
 	,DisableFlightSphere         = 1 << 22
 
+	,DisableAdrenaline           = 1 << 23
 }
 
 enum PBX_Armory_ItemSpawns
 {
 	DisableRepairKit			= 1 << 0
-	,DisableAdrenaline          = 1 << 1
-	,DisableShoulderCannon      = 1 << 2
-	,DisableJetPack             = 1 << 3
-	,DisableUpgradeBot          = 1 << 4
-	,DisableSmartScav           = 1 << 5
+	,DisableShoulderCannon      = 1 << 1
+	,DisableJetPack             = 1 << 2
+	,DisableUpgradeBot          = 1 << 3
+	,DisableSmartScav           = 1 << 4
 
 }
 
@@ -66,9 +66,9 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
 {
 	override void Init(PB_EventHandler handler)		//override this
 	{
-        name powerupsFlag = "PBX_Armory_powerupfilter";
-        name itemsFlag = "PBX_Armory_itemFilter";
-        name armorsFlag = "PBX_Armory_armorFilter";
+        name powerupsFlag = "PBX_Powerups_Filter";
+        name itemsFlag = "PBX_Items_Filter";
+        name armorsFlag = "PBX_Armors_Filter";
 
 //////////////////////////// POWERUPS ///////////////////////////////////////////////////////////////////////////////
         if(!CheckFlag(DisableMegaBerserk,powerupsFlag))
@@ -241,6 +241,14 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
             handler.InjectSpawn('PB_SoulSphereSpawnerT4', 'PBX_FlightSphere', 255, 1);
         }
 
+        if(!CheckFlag(DisableAdrenaline,powerupsFlag))
+        {
+            handler.InjectSpawn('PB_BerserkSpawnerT1', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT3', 'PBX_Adrenaline', 255, 1);
+            handler.InjectSpawn('PB_BerserkSpawnerT4', 'PBX_Adrenaline', 255, 1);
+        }
+
 //////////////////////////// ITEMS ///////////////////////////////////////////////////////////////////////////////
         if(!CheckFlag(DisableRepairKit,itemsFlag))
         {
@@ -248,14 +256,6 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
             handler.InjectSpawn('PB_PackSpawnerT2', 'PBX_RepairKit', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT3', 'PBX_RepairKit', 255, 1);
             handler.InjectSpawn('PB_PackSpawnerT4', 'PBX_RepairKit', 255, 1);
-        }
-
-        if(!CheckFlag(DisableAdrenaline,itemsFlag))
-        {
-            handler.InjectSpawn('PB_BerserkSpawnerT1', 'PBX_Adrenaline', 255, 1);
-            handler.InjectSpawn('PB_BerserkSpawnerT2', 'PBX_Adrenaline', 255, 1);
-            handler.InjectSpawn('PB_BerserkSpawnerT3', 'PBX_Adrenaline', 255, 1);
-            handler.InjectSpawn('PB_BerserkSpawnerT4', 'PBX_Adrenaline', 255, 1);
         }
 
         if(!CheckFlag(DisableShoulderCannon,itemsFlag) && !PBXCore_GlorykillLoaded)
@@ -273,10 +273,10 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
 
         if(!CheckFlag(DisableUpgradeBot,itemsFlag))
         {
-            // handler.InjectSpawn('PB_UpgradeSpawnerT1', 'PBX_Armory_UpgradeBot', 255, 1);
-            handler.InjectSpawn('PB_UpgradeSpawnerT2', 'PBX_Armory_UpgradeBot', 255, 1);
-            handler.InjectSpawn('PB_UpgradeSpawnerT3', 'PBX_Armory_UpgradeBot', 255, 1);
-            // handler.InjectSpawn('PB_UpgradeSpawnerT4', 'PBX_Armory_UpgradeBot', 255, 1);
+            // handler.InjectSpawn('PB_UpgradeSpawnerT1', 'PBX_UpgradeBot', 255, 1);
+            handler.InjectSpawn('PB_UpgradeSpawnerT2', 'PBX_UpgradeBot', 255, 1);
+            handler.InjectSpawn('PB_UpgradeSpawnerT3', 'PBX_UpgradeBot', 255, 1);
+            // handler.InjectSpawn('PB_UpgradeSpawnerT4', 'PBX_UpgradeBot', 255, 1);
         }
 
 //////////////////////////// ARMORS ///////////////////////////////////////////////////////////////////////////////
@@ -389,11 +389,12 @@ class PBX_Armory_Injector : PBInjector	//your injector needs to inherit from PBI
     }
 }
 
+//////////////////////////// OTHERS ///////////////////////////////////////////////////////////////////////////////
 class PBX_SmartScavHandler : EventHandler
 {
     override void CheckReplacement(ReplaceEvent e) 
 	{
-        if(PBX_Armory_itemFilter & DisableSmartScav) 
+        if(PBX_Items_Filter & DisableSmartScav) 
         {
             return;
         }

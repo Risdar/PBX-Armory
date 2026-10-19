@@ -4,6 +4,6 @@ Version 5.0
 #include "Zscript/PBX_Armory/PBX_Armory_Spawners.zs"
 
 #include "Zscript/PBX_Armory/Items/PBX_Items.zs"
-#include "Zscript/PBX_Armory/Powerups/PBX_Powerups.zs"
-#include "Zscript/PBX_Armory/Armors/PBX_Armors.zs"
+#include "Zscript/PBX_Armory/Powerups/PBX_Powerups_Base.zs"
+#include "Zscript/PBX_Armory/Armors/PBX_Armors_Base.zs"
 

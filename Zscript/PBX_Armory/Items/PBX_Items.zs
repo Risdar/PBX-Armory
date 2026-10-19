@@ -8,11 +8,10 @@ const PBX_ITEM_HELP_FLAG = "PBX_Armory_itemHelpFlags";
 enum PBX_Items_TipFlags
 {
 	PBX_Armory_Tip_RepairKit		    = 1 << 0
-	,PBX_Armory_Tip_Adrenaline          = 1 << 1
-	,PBX_Armory_Tip_ShoulderCannon      = 1 << 2
-	,PBX_Armory_Tip_JetPack         	= 1 << 3
-	,PBX_Armory_Tip_UpgradeBot         	= 1 << 4
-	,PBX_Armory_Tip_SmartScav         	= 1 << 5
+	,PBX_Armory_Tip_ShoulderCannon      = 1 << 1
+	,PBX_Armory_Tip_JetPack         	= 1 << 2
+	,PBX_Armory_Tip_UpgradeBot         	= 1 << 3
+	,PBX_Armory_Tip_SmartScav         	= 1 << 4
 }
 
 class PBX_Items_Handler : EventHandler
@@ -58,38 +57,3 @@ class PBX_Items_Handler : EventHandler
 	}
 
 }
-
-// --- Adrenaline ---
-class PBX_Adrenaline : PB_Inventory
-{
-	Default
-	{
-		Inventory.AltHudIcon "ADRNA0";
-		Inventory.PickupMessage "$ADRENAL_PICKUP";
-		Inventory.PickupSound "misc/p_pkup";
-		Tag "$ADRENAL_TAG";
-	}
-
-	override bool Use(bool pickup)
-	{
-		if(PBX_Armory_SendTip)
-		{
-			Array<String> tips;
-			tips.Push("$PBX_Adrenaline_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_ITEM_HELP_FLAG,PBX_Armory_Tip_Adrenaline);
-		}
-		owner.A_SetBlend("Red",0.75,16);
-		owner.A_GiveInventory("PBX_Items_AdreSpdGiver");
-		owner.A_GiveInventory("PBX_Items_AdrePowGiver");
-		return true;
-	}
-
-	States
-	{
-		Spawn:
-			ADRN A -1;
-			stop;
-	}
-}
-class PBX_Items_AdreSpdGiver : PB_HasteGiver {mixin PBX_Armory_Duration;}
-class PBX_Items_AdrePowGiver : PB_DoomGiver  {mixin PBX_Armory_Duration;}

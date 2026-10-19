@@ -11,7 +11,7 @@
 // Xaser - Amazing Mod-Swaping Animations from Argent 0.5.3
 // Hexereticdoom - Original version of HXRTC HUD
 
-class PBX_Armory_UpgradeBot : SwitchableDecoration
+class PBX_UpgradeBot : SwitchableDecoration
 {
 
 	Default
@@ -89,7 +89,7 @@ class PBX_Armory_UpgradeBot : SwitchableDecoration
 
 // Gets all the upgrade and puts them into an array
 // This way its only called once
-class PBX_Armory_UpgradeBotHandler : StaticEventHandler
+class PBX_UpgradeBotHandler : StaticEventHandler
 {
     private Array<Class<PB_UpgradeItem> > cachedUpgrades;
 
@@ -119,7 +119,7 @@ class PBX_Armory_UpgradeBotHandler : StaticEventHandler
 			PBXCore_Debug.print("Found Upgrade Item");
         }
 
-        PBXCore_Debug.printInt("PBX_Armory_UpgradeBotHandler: found %d upgrade item(s).", cachedUpgrades.Size());
+        PBXCore_Debug.printInt("PBX_UpgradeBotHandler: found %d upgrade item(s).", cachedUpgrades.Size());
     }
 
     // Returns a pointer to a random member of the array
@@ -142,16 +142,16 @@ class PBX_Armory_UpgradeBotHandler : StaticEventHandler
     }
 
     // Easy way to get the handler
-    static PBX_Armory_UpgradeBotHandler Get()
+    static PBX_UpgradeBotHandler Get()
     {
-        return PBX_Armory_UpgradeBotHandler(StaticEventHandler.Find('PBX_Armory_UpgradeBotHandler'));
+        return PBX_UpgradeBotHandler(StaticEventHandler.Find('PBX_UpgradeBotHandler'));
     }
 }
 
 // Plays an animation and actually gives the upgrade
 class UpgradeBotAnimation : PB_WeaponBase
 {
-    PBX_Armory_UpgradeBotHandler handler;
+    PBX_UpgradeBotHandler handler;
     Weapon savedWeapon; // what the player was holding before force switch
 
     Default
@@ -169,10 +169,10 @@ class UpgradeBotAnimation : PB_WeaponBase
         Super.PostBeginPlay();
 
         // Get the Handler
-        handler = PBX_Armory_UpgradeBotHandler.Get();
+        handler = PBX_UpgradeBotHandler.Get();
         if (!handler)
         {
-            Console.Printf("PB_UpgradeAnimWeapon: PBX_Armory_UpgradeBotHandler not found!");
+            Console.Printf("PB_UpgradeAnimWeapon: PBX_UpgradeBotHandler not found!");
         }
 
         // Save the last weapon used so we can switch back to it
@@ -274,7 +274,7 @@ class UpgradeBotAnimation : PB_WeaponBase
 }
 
 // Modified from PB's execution handler
-class PBX_Armory_UpgradeBotDisplay : EventHandler
+class PBX_UpgradeBotDisplay : EventHandler
 {
     private pb_ProjScreen 	    mProjection;
     private pb_uiHack 		    mTranslator;
@@ -315,7 +315,7 @@ class PBX_Armory_UpgradeBotDisplay : EventHandler
     void drawEverything(RenderEvent event)
     {
         Actor target = getTarget();
-        if(target && target is "PBX_Armory_UpgradeBot") 
+        if(target && target is "PBX_UpgradeBot") 
         {
             Draw(event, target);
         }

@@ -35,7 +35,7 @@ Class PBX_BlackBlur : PB_Inventory
 				{
 					Array<String> tips;
 					tips.Push("$PBX_BlackBlur_Tip1");
-					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_BlackBlur);
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Powerups_Tip_BlackBlur);
 				}
 			}
 			else if(obj && obj.bISMONSTER && obj.health > 0 && Distance3D(obj) > 256 && obj.bSTEALTH)
@@ -103,6 +103,43 @@ Class PBX_BlackBlur : PB_Inventory
 	}
 }
 
+class PBX_InvisTaintedGiver : PB_PowerupGiver { Default { Powerup.Type "PBX_PowerInvisTainted"; } }
+Class PBX_PowerInvisTainted : PB_PowerInvis
+{
+	mixin PBX_PowerupTimer;
+	mixin PBX_Armory_Duration;
+	Default
+	{
+		+SHADOW;
+		+REFLECTIVE;
+		Powerup.Strength 100;
+		Powerup.Mode "Translucent";
+	}
+	
+	override void InitEffect()
+	{
+		super.InitEffect();
+		if(!Owner) return;
+		owner.bCANTSEEK = TRUE;	
+		owner.A_AttachLightDef("InvisTaintedLight","InvisTaintedLight");
+	}
+
+	override void DoEffect()
+	{
+		Super.DoEffect();
+		PowerupTimer("DarkSlateBlue");
+	}
+	
+	override void EndEffect()
+	{
+		super.EndEffect();
+		if(!Owner) return;
+		owner.bCANTSEEK = FALSE;
+		EndBlend("DarkSlateBlue");
+		owner.A_RemoveLight("InvisTaintedLight");
+	}
+}
+
 //////////////////////////// GOLD INVULNERABILITY ///////////////////////////////////////////////////////////////////////////////
 class PBX_GoldInvul : PB_Inventory
 {
@@ -124,10 +161,10 @@ class PBX_GoldInvul : PB_Inventory
 		{
 			Array<String> tips;
 			tips.Push("$PBX_GoldInvul_Tip1");
-			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_GoldInvul);
+			PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Powerups_Tip_GoldInvul);
 		}
 		owner.A_SetBlend("PaleGoldenrod",0.75,16);
-		owner.A_GiveInventory("PBX_Powerups_InvulTaintedGiver");
+		owner.A_GiveInventory("PBX_InvulTaintedGiver");
 		if(pb_newmugshot) owner.A_SetMugshotState("Grin");
 		return true;
 	}
@@ -232,15 +269,58 @@ class PBX_GoldInvul : PB_Inventory
 		    Loop;
 	}
 }
-class PBX_Powerups_InvulTaintedGiver : PBX_InvulTaintedGiver 
+
+class PBX_InvulTaintedGiver : PB_PowerupGiver { Default { Powerup.Type "PBX_PowerInvulTainted"; } }
+Class PBX_PowerInvulTainted : PowerInvulnerable
 {
+	mixin PBX_PowerupTimer;
 	mixin PBX_Armory_Duration;
-	Default{Powerup.Color "GoldMap";}
+	
+	Default
+	{
+		Powerup.Color "GoldMap";
+	}
+
+	override void InitEffect()
+	{
+		super.InitEffect();
+		if(!Owner) return;
+		owner.bREFLECTIVE = TRUE;
+		owner.bAIMREFLECT = TRUE;
+		owner.bNOBLOOD = true;
+		owner.A_AttachLightDef("InvulTaintedLight","InvulTaintedLight");
+	}
+
+	override void DoEffect()
+	{
+		Super.DoEffect();
+		if(CVar.GetCVar("pb_powerup_shaders",Owner.Player).GetBool())
+		{
+			Shader.SetEnabled(Owner.Player,"Invulnerability",true);
+			PPShader.SetUniform1f("Invulnerability","intensity",1.0);
+		}
+		else
+		{
+			Shader.SetEnabled(Owner.Player,"Invulnerability",false);
+		}
+		PowerupTimer("PaleGoldenrod");
+	}
+	
+	override void EndEffect()
+	{
+		super.EndEffect();
+		if(!Owner) return;
+		owner.bREFLECTIVE = FALSE;
+		owner.bAIMREFLECT = FALSE;
+		owner.bNOBLOOD = false;
+		Shader.SetEnabled(Owner.Player,"Invulnerability",false);
+		EndBlend("PaleGoldenrod");	
+		owner.A_RemoveLight("InvulTaintedLight");
+	}
 }
 
 //////////////////////////// RED SOULSPHERE ///////////////////////////////////////////////////////////////////////////////
 Class CorpseDrained : Inventory {Default{Inventory.MaxAmount 1;+INVENTORY.UNDROPPABLE;}}
-
 class PBX_RedSoulSphere : PB_Inventory
 {
 	Default
@@ -332,7 +412,7 @@ class PBX_RedSoulSphere : PB_Inventory
 					Array<String> tips;
 					tips.Push("$PBX_RedSoul_Tip1");
 					tips.Push("$PBX_RedSoul_Tip2");
-					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_RedSoul);
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Powerups_Tip_RedSoul);
 				}
                 obj.DamageMobj(self, self, 1, "");
 			}
@@ -464,7 +544,7 @@ class PBX_DarkMegaSphere : PB_Inventory
 				{
 					Array<String> tips;
 					tips.Push("$PBX_DarkMega_Tip1");
-					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Armory_Tip_DarkMega);
+					PBXCore_TipsManager.SendTipArrayIfNeeded(tips,PBX_POWERUP_HELP_FLAG,PBX_Powerups_Tip_DarkMega);
 				}
 			}
 		}
@@ -475,5 +555,36 @@ class PBX_DarkMegaSphere : PB_Inventory
 		Spawn:
 			TMEG ABCDCB 6 bright;
 			loop;
+	}
+}
+
+class PBX_TaintedRegenGiver : PB_PowerupGiver { Default { Powerup.Type "PBX_PowerTaintedRegen"; } }
+class PBX_PowerTaintedRegen : Powerup
+{
+	mixin PBX_PowerupTimer;
+	mixin PBX_Armory_Duration;
+	// Default { Powerup.Color "Cyan";}
+
+	override void InitEffect()
+	{
+		Super.InitEffect();
+		if(!Owner) return;
+		owner.A_AttachLightDef("RegenTnLight","RegenTnLight");
+	}
+	
+	override void DoEffect()
+	{
+		Super.DoEffect();
+		if(owner && owner.health < 200 && GetAge() % 3 == 0)
+			owner.GiveBody(1,200);
+		PowerupTimer("MediumPurple");
+	}
+
+	override void EndEffect()
+	{
+		Super.EndEffect();
+		if(!Owner) return;
+		EndBlend("MediumPurple");
+		owner.A_RemoveLight("RegenTnLight");
 	}
 }
