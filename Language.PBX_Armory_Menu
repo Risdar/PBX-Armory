@@ -115,8 +115,7 @@ PBX_ITEMS_JET_PACK = "Enable Jet Pack";
 PBX_ITEMS_UPGRADEBOT = "Enable Upgrade Bot";
 
 //////////////////////////// KEYS MENU ///////////////////////////////////////////////////////////////////////////////
-PBX_ARMORY_KEYS_SHOULDERCANNON = "Shoulder Cannon";
-PBX_ARMORY_KEYS_FLAMEBELCH = "Shoulder Cannon: Flame Belch";
-PBX_ARMORY_KEYS_ICEBOMB = "Shoulder Cannon: Ice Bomb";
-
-PBX_ARMORY_KEYS_JETPACK = "Toggle Jetpack";
+PBX_ARMORY_KEYS = "PBX - Armory Keys";
+PBX_SC_KEYS_FLAMEBELCH = "Shoulder Channon: Flame Belch";
+PBX_SC_KEYS_ICEBOMB = "Shoulder Channon: Ice Bomb";
+PBX_JETPACK_KEYS = "Jet Pack: Toggle";
