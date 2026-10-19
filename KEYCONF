@@ -1,4 +1,4 @@
-addkeysection "$PBX_SC_KEYS"                PBX_KEY
+addkeysection "$PBX_ARMORY_KEYS"            PBX_KEY
 Alias          pbx_doflame	                "netevent PBX_UseFlameBelch"
 Alias          pbx_doice	                "netevent PBX_UseIceBomb"
 Alias          pbx_togglejetpack	        "netevent PBX_ToggleJetpack"
