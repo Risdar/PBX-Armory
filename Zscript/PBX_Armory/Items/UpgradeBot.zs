@@ -350,7 +350,7 @@ class PBX_UpgradeBotDisplay : EventHandler
         double distance = player.mo.distance3D(target);
         double dist = player.mo.radius + player.mo.userange;
 
-        // Skip iff the player is far or if the bot is dead
+        // Skip if the player is far or if the bot is dead
         if ((distance > dist*2.5) || target.bCorpse || distance == 0) return;
         
         string ky,ky2;
